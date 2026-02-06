@@ -1,0 +1,69 @@
+:root{
+    --bg: #0f1724;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #0d6efd;
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+*{box-sizing:border-box}
+body{
+    background: linear-gradient(180deg,#f6fbff 0%, #f8fafc 100%);
+    color:#0b1220;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+}
+
+#map{border-radius:8px;overflow:hidden}
+
+.card{box-shadow:0 6px 18px rgba(13,24,40,0.06);border:none;margin-bottom:1rem;border-radius:10px}
+
+.update-list{max-height:220px;overflow-y:auto;padding:0}
+
+.update-item{padding:.6rem .75rem;border-bottom:1px solid #f1f5f9;font-size:.95rem;background:transparent}
+.update-item small{color:var(--muted)}
+
+.vehicle-marker{width:36px;height:36px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 6px 18px rgba(13,24,40,0.12);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+.vehicle-marker.motorcycle{background:var(--success)}
+.vehicle-marker.inactive{background:#9ca3af}
+
+.mapboxgl-popup{max-width:220px}
+.mapboxgl-popup-content{padding:1rem;border-radius:10px}
+
+.navbar-brand{font-weight:700;letter-spacing:.6px}
+
+#radius-value{font-weight:700;color:var(--accent)}
+
+/* Vehicle list items */
+.vehicle-item{cursor:pointer;transition:background .12s ease}
+.vehicle-item:hover{background:#f8fafc}
+
+/* Badges */
+.badge-status-active{background:var(--success);color:#06361a}
+.badge-status-inactive{background:#6b7280}
+
+/* Responsive tweaks */
+@media (max-width:767px){
+    .sticky-top{position:static!important}
+    #map{height:420px!important}
+}
+
+/* subtle pulse for active vehicles */
+.vehicle-marker::after{content:'';position:absolute;width:46px;height:46px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(13,110,253,0.08);opacity:0;transition:opacity .25s}
+.vehicle-marker.active::after{opacity:1}
+
+/* small helper */
+.small-muted{font-size:.85rem;color:var(--muted)}
+
+/* map controls */
+.mapboxgl-ctrl-bottom-right{display:none}
+
+/* form controls */
+.form-control:focus{box-shadow:0 0 0 .15rem rgba(13,110,253,0.12);border-color:var(--accent)}
+
+/* card header */
+.card .card-header{background:transparent;border-bottom:none;padding:.8rem 1rem}
+
+/* vehicle marker icons larger on high zoom */
+@media (min-width:1200px){.vehicle-marker{width:42px;height:42px;font-size:16px}}
